@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.servers.Server;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,9 +24,10 @@ import org.springframework.web.servlet.HandlerMapping;
 import java.net.MalformedURLException;
 import java.util.List;
 
-@OpenAPIDefinition(info = @Info(
-        title = "Servidor de imagenes",
-        contact = @Contact(
+@OpenAPIDefinition(
+        info = @Info(
+            title = "Servidor de imagenes",
+            contact = @Contact(
                 name = "Contactame en LinkedIn",
                 url = "https://www.linkedin.com/in/alejo-kannemann-10b58b191/"
         ),
@@ -34,7 +36,16 @@ import java.util.List;
                 Estas tienen un periodo de almacenamiento hasta las 00:00 AM (GMT-3).
                 No hace uso de base de datos para almacenar las rutas de las imagenes almacenadas.
                 """,
-        version = "1.0"))
+        version = "1.0"),
+        servers ={
+                @Server(
+                        url = "https://project-1.alejokannemann.com.ar/v1",
+                        description = "Prod ENV"),
+                @Server(
+                        url = "http://localhost:8090",
+                        description = "Test ENV"
+                )
+        } )
 @RestController
 @RequestMapping("images")
 @Tag(name = "Servidor de Imagenes")
