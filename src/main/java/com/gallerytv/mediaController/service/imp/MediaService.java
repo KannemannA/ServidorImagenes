@@ -67,7 +67,7 @@ public class MediaService implements IMediaService {
         }
         if (val == 0){
             List<String> name=subir(images);
-            List<String> output= name.stream().map(arch -> "https://"+request.getServerName()+"/images/"+arch).toList();
+            List<String> output= name.stream().map(arch -> "https://"+request.getServerName()+"/v1/images/"+arch).toList();
             return new ResponseEntity<>(output, HttpStatus.OK);
         }
         return new ResponseEntity<>("Solo aceptamos archivos con extensiones jpg, png, gif, jpeg y svg",HttpStatus.BAD_REQUEST);
