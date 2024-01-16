@@ -36,7 +36,16 @@ import java.util.List;
                 Estas tienen un periodo de almacenamiento hasta las 00:00 AM (GMT-3).
                 No hace uso de base de datos para almacenar las rutas de las imagenes almacenadas.
                 """,
-        version = "1.0") )
+        version = "1.0"),
+        servers ={
+                @Server(
+                        url = "https://project-1.alejokannemann.com.ar/v1",
+                        description = "Prod ENV"),
+                @Server(
+                        url = "http://localhost:9090",
+                        description = "Test ENV"
+                )
+        })
 @RestController
 @RequestMapping("images")
 @Tag(name = "Servidor de Imagenes")
